@@ -1,0 +1,4 @@
+(fp_lib_table
+  (lib (name Connector_JST)(type KiCad)(uri ${KISYSMOD}/Connector_JST.pretty)(options "")(descr ""))
+  (lib (name Package_DFN_QFN)(type KiCad)(uri ${KISYSMOD}/Package_DFN_QFN.pretty)(options "")(descr ""))
+)
