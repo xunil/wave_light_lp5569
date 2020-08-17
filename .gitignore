@@ -1,2 +1,5 @@
 *-bak
 *old
+*.pyc
+.idea
+venv/*
