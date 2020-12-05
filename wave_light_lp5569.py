@@ -77,8 +77,8 @@ class LP5569:
             raise Exception("Cannot enable internal clock when LP5569 is hardware-disabled")
         if self.enabled_sw:
             raise Exception("Cannot enable internal clock when LP5569 is software-enabled")
-        self.reg[MISC] |= (0x01 | (3 << 3))  # int_clk_en = 0b1; cp_mode = 0b11
         self.reg[IO_CONTROL] |= 0b00001000
+        self.reg[MISC] |= (0x01 | (3 << 3))  # int_clk_en = 0b1; cp_mode = 0b11
 
     def set_led_control(self, led, fader, ratiometric, exponential, external_power):
         control_byte = 0
