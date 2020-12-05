@@ -46,46 +46,16 @@ F 3 "~" H 6250 2250 50  0001 C CNN
 	1    6250 2250
 	-1   0    0    1   
 $EndComp
-$Comp
-L Connector_Generic:Conn_02x04_Odd_Even J2
-U 1 1 5EE6F386
-P 2700 4000
-F 0 "J2" H 2650 4300 50  0000 L CNN
-F 1 "Conn_02x04_Odd_Even" H 2650 4200 50  0000 L CNN
-F 2 "Pin_Headers:Pin_Header_Straight_2x04_Pitch2.54mm" H 2700 4000 50  0001 C CNN
-F 3 "~" H 2700 4000 50  0001 C CNN
-	1    2700 4000
-	1    0    0    -1  
-$EndComp
-Text GLabel 3200 3900 2    50   Input ~ 0
+Text GLabel 3140 3790 2    50   Input ~ 0
 ADDR
-Text GLabel 2500 4100 0    50   Input ~ 0
+Text GLabel 2640 4180 0    50   Input ~ 0
 SDA
-Text GLabel 2500 4000 0    50   Input ~ 0
+Text GLabel 2640 3990 0    50   Input ~ 0
 SCL
-Text GLabel 2500 4200 0    50   Input ~ 0
+Text GLabel 2640 4370 0    50   Input ~ 0
 VIN
-Text GLabel 2500 3900 0    50   Input ~ 0
+Text GLabel 2640 3790 0    50   Input ~ 0
 GND
-Wire Wire Line
-	3000 3900 3100 3900
-Wire Wire Line
-	3100 3900 3100 4000
-Wire Wire Line
-	3100 4200 3000 4200
-Connection ~ 3100 3900
-Wire Wire Line
-	3100 3900 3200 3900
-Wire Wire Line
-	3100 4100 3000 4100
-Connection ~ 3100 4100
-Wire Wire Line
-	3100 4100 3100 4200
-Wire Wire Line
-	3100 4000 3000 4000
-Connection ~ 3100 4000
-Wire Wire Line
-	3100 4000 3100 4100
 Text GLabel 5300 4400 0    50   Input ~ 0
 ADDR
 Text GLabel 5250 4550 0    50   Input ~ 0
@@ -119,10 +89,8 @@ Wire Wire Line
 	6050 2100 6250 2100
 Wire Wire Line
 	6250 2500 6250 2400
-Text GLabel 8150 2550 0    50   Input ~ 0
+Text GLabel 8400 3410 0    50   Input ~ 0
 LED0
-Text GLabel 8150 2650 0    50   Input ~ 0
-VLED
 Text GLabel 6600 3550 2    50   Input ~ 0
 LED0
 Text GLabel 6600 3700 2    50   Input ~ 0
@@ -141,88 +109,22 @@ Text GLabel 6600 4600 2    50   Input ~ 0
 LED7
 Text GLabel 6600 4750 2    50   Input ~ 0
 LED8
-Text GLabel 8150 2850 0    50   Input ~ 0
+Text GLabel 8400 3510 0    50   Input ~ 0
 LED1
-Text GLabel 8150 2950 0    50   Input ~ 0
-VLED
-Text GLabel 8150 3150 0    50   Input ~ 0
+Text GLabel 8400 3610 0    50   Input ~ 0
 LED2
-Text GLabel 8150 3250 0    50   Input ~ 0
-VLED
-Text GLabel 8150 3450 0    50   Input ~ 0
+Text GLabel 8400 3710 0    50   Input ~ 0
 LED3
-Text GLabel 8150 3550 0    50   Input ~ 0
-VLED
-Text GLabel 8150 3750 0    50   Input ~ 0
+Text GLabel 8400 3810 0    50   Input ~ 0
 LED4
-Text GLabel 8150 3850 0    50   Input ~ 0
-VLED
-Text GLabel 8150 4050 0    50   Input ~ 0
+Text GLabel 8400 3910 0    50   Input ~ 0
 LED5
-Text GLabel 8150 4150 0    50   Input ~ 0
-VLED
-$Comp
-L Connector:Conn_01x02_Male J11
-U 1 1 5EE7DB80
-P 8350 4350
-F 0 "J11" H 8322 4324 50  0000 R CNN
-F 1 "Conn_01x02_Male" H 8322 4233 50  0000 R CNN
-F 2 "Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical" H 8350 4350 50  0001 C CNN
-F 3 "~" H 8350 4350 50  0001 C CNN
-	1    8350 4350
-	-1   0    0    -1  
-$EndComp
-Text GLabel 8150 4350 0    50   Input ~ 0
+Text GLabel 8400 4010 0    50   Input ~ 0
 LED6
-Text GLabel 8150 4450 0    50   Input ~ 0
-VLED
-$Comp
-L Connector:Conn_01x02_Male J12
-U 1 1 5EE7E11A
-P 8350 4650
-F 0 "J12" H 8322 4624 50  0000 R CNN
-F 1 "Conn_01x02_Male" H 8322 4533 50  0000 R CNN
-F 2 "Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical" H 8350 4650 50  0001 C CNN
-F 3 "~" H 8350 4650 50  0001 C CNN
-	1    8350 4650
-	-1   0    0    -1  
-$EndComp
-Text GLabel 8150 4650 0    50   Input ~ 0
+Text GLabel 8400 4110 0    50   Input ~ 0
 LED7
-Text GLabel 8150 4750 0    50   Input ~ 0
-VLED
-$Comp
-L Connector:Conn_01x02_Male J13
-U 1 1 5EE7E4EC
-P 8350 4950
-F 0 "J13" H 8322 4924 50  0000 R CNN
-F 1 "Conn_01x02_Male" H 8322 4833 50  0000 R CNN
-F 2 "Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical" H 8350 4950 50  0001 C CNN
-F 3 "~" H 8350 4950 50  0001 C CNN
-	1    8350 4950
-	-1   0    0    -1  
-$EndComp
-Text GLabel 8150 4950 0    50   Input ~ 0
+Text GLabel 8400 4210 0    50   Input ~ 0
 LED8
-Text GLabel 8150 5050 0    50   Input ~ 0
-VLED
-$Comp
-L Connector:Conn_01x03_Male J4
-U 1 1 5EE80D99
-P 7150 1300
-F 0 "J4" H 7258 1581 50  0000 C CNN
-F 1 "Conn_01x03_Male" H 7258 1490 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x03_Pitch2.54mm" H 7150 1300 50  0001 C CNN
-F 3 "~" H 7150 1300 50  0001 C CNN
-	1    7150 1300
-	-1   0    0    -1  
-$EndComp
-Text GLabel 6950 1200 0    50   Input ~ 0
-VIN
-Text GLabel 6950 1300 0    50   Input ~ 0
-VLED
-Text GLabel 6950 1400 0    50   Input ~ 0
-VOUT
 Text GLabel 7200 3100 2    50   Input ~ 0
 VOUT
 $Comp
@@ -388,7 +290,7 @@ U 1 1 5EE92BFD
 P 2050 5400
 F 0 "J1" H 2158 5781 50  0000 C CNN
 F 1 "Conn_01x06_Male" H 2158 5690 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Angled_1x06_Pitch2.54mm" H 2050 5400 50  0001 C CNN
+F 2 "Connector_JST:JST_PH_B6B-PH-K_1x06_P2.00mm_Vertical" H 2050 5400 50  0001 C CNN
 F 3 "~" H 2050 5400 50  0001 C CNN
 	1    2050 5400
 	1    0    0    -1  
@@ -427,47 +329,36 @@ F 3 "~" H 4850 1200 50  0001 C CNN
 $EndComp
 Text Notes 2400 1900 0    50   ~ 0
 1.8V LDO Regulator
-Text Notes 2450 3650 0    50   ~ 0
+Text Notes 2420 3590 0    50   ~ 0
 Address Selection
 Text Notes 1900 4950 0    50   ~ 0
 Logic Inputs
-Text Notes 6600 950  0    50   ~ 0
+Text Notes 7190 880  0    50   ~ 0
 LED Power Rail Selection
-Text Notes 7900 2400 0    50   ~ 0
+Text Notes 8050 3260 0    50   ~ 0
 LED Connections
-$Comp
-L Connector:Conn_01x06_Female J3
-U 1 1 5EE99C99
-P 3300 5400
-F 0 "J3" H 3200 5800 50  0000 C CNN
-F 1 "Conn_01x06_Female" H 3150 5700 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Angled_1x06_Pitch2.54mm" H 3300 5400 50  0001 C CNN
-F 3 "~" H 3300 5400 50  0001 C CNN
-	1    3300 5400
-	-1   0    0    -1  
-$EndComp
-Text GLabel 3500 5700 2    50   Input ~ 0
+Text GLabel 3400 5200 2    50   Input ~ 0
 SCL
-Text GLabel 3500 5600 2    50   Input ~ 0
+Text GLabel 3400 5300 2    50   Input ~ 0
 SDA
-Text GLabel 3500 5400 2    50   Input ~ 0
+Text GLabel 3400 5500 2    50   Input ~ 0
 CLK
-Text GLabel 3500 5500 2    50   Input ~ 0
+Text GLabel 3400 5400 2    50   Input ~ 0
 EN_PWM
-Text GLabel 3500 5300 2    50   Input ~ 0
+Text GLabel 3400 5600 2    50   Input ~ 0
 GPIO_TRIG_INT
 $Comp
 L power:GND #PWR0107
 U 1 1 5EE99CA4
-P 3500 5200
-F 0 "#PWR0107" H 3500 4950 50  0001 C CNN
-F 1 "GND" V 3505 5072 50  0000 R CNN
-F 2 "" H 3500 5200 50  0001 C CNN
-F 3 "" H 3500 5200 50  0001 C CNN
-	1    3500 5200
-	0    -1   1    0   
+P 3400 5700
+F 0 "#PWR0107" H 3400 5450 50  0001 C CNN
+F 1 "GND" H 3470 5530 50  0000 R CNN
+F 2 "" H 3400 5700 50  0001 C CNN
+F 3 "" H 3400 5700 50  0001 C CNN
+	1    3400 5700
+	1    0    0    -1  
 $EndComp
-Text Notes 3200 4950 0    50   ~ 0
+Text Notes 3070 4940 0    50   ~ 0
 Logic Outputs
 $Comp
 L Device:C C3
@@ -581,93 +472,27 @@ Text Notes 4500 950  0    50   ~ 0
 GPIO Pullup
 Text Notes 4750 850  0    50   ~ 0
 Only populate on first board
-Text Notes 1750 3950 0    50   ~ 0
+Text Notes 1890 3820 0    50   ~ 0
 32h and 40h
-Text Notes 1750 4050 0    50   ~ 0
+Text Notes 1890 4030 0    50   ~ 0
 33h and 40h
-Text Notes 1750 4150 0    50   ~ 0
+Text Notes 1890 4210 0    50   ~ 0
 34h and 40h
-Text Notes 1750 4250 0    50   ~ 0
+Text Notes 1890 4400 0    50   ~ 0
 35h and 40h
-Text Notes 1950 4400 0    50   ~ 0
+Text Notes 1990 4580 0    50   ~ 0
 Add 10h to individual address for LP5569A
 Text Notes 4850 2850 0    50   ~ 0
 LED Controller
-Text Notes 7200 1450 0    50   ~ 0
+Text Notes 6890 1450 0    50   ~ 0
 Use Charge Pump Output
-Text Notes 7200 1250 0    50   ~ 0
+Text Notes 7240 1050 0    50   ~ 0
 Use Input Voltage
-Text Notes 7200 1350 0    50   ~ 0
+Text Notes 7230 1240 0    50   ~ 0
 Common Pin
 Wire Wire Line
 	2300 2650 2300 2300
 Connection ~ 2300 2300
-$Comp
-L Connector:Conn_01x02_Male J10
-U 1 1 5EE7D733
-P 8350 4050
-F 0 "J10" H 8322 4024 50  0000 R CNN
-F 1 "Conn_01x02_Male" H 8322 3933 50  0000 R CNN
-F 2 "Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical" H 8350 4050 50  0001 C CNN
-F 3 "~" H 8350 4050 50  0001 C CNN
-	1    8350 4050
-	-1   0    0    -1  
-$EndComp
-$Comp
-L Connector:Conn_01x02_Male J9
-U 1 1 5EE7D3E2
-P 8350 3750
-F 0 "J9" H 8322 3724 50  0000 R CNN
-F 1 "Conn_01x02_Male" H 8322 3633 50  0000 R CNN
-F 2 "Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical" H 8350 3750 50  0001 C CNN
-F 3 "~" H 8350 3750 50  0001 C CNN
-	1    8350 3750
-	-1   0    0    -1  
-$EndComp
-$Comp
-L Connector:Conn_01x02_Male J8
-U 1 1 5EE7D1FB
-P 8350 3450
-F 0 "J8" H 8322 3424 50  0000 R CNN
-F 1 "Conn_01x02_Male" H 8322 3333 50  0000 R CNN
-F 2 "Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical" H 8350 3450 50  0001 C CNN
-F 3 "~" H 8350 3450 50  0001 C CNN
-	1    8350 3450
-	-1   0    0    -1  
-$EndComp
-$Comp
-L Connector:Conn_01x02_Male J7
-U 1 1 5EE7CFF6
-P 8350 3150
-F 0 "J7" H 8322 3124 50  0000 R CNN
-F 1 "Conn_01x02_Male" H 8322 3033 50  0000 R CNN
-F 2 "Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical" H 8350 3150 50  0001 C CNN
-F 3 "~" H 8350 3150 50  0001 C CNN
-	1    8350 3150
-	-1   0    0    -1  
-$EndComp
-$Comp
-L Connector:Conn_01x02_Male J6
-U 1 1 5EE7CCB5
-P 8350 2850
-F 0 "J6" H 8322 2824 50  0000 R CNN
-F 1 "Conn_01x02_Male" H 8322 2733 50  0000 R CNN
-F 2 "Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical" H 8350 2850 50  0001 C CNN
-F 3 "~" H 8350 2850 50  0001 C CNN
-	1    8350 2850
-	-1   0    0    -1  
-$EndComp
-$Comp
-L Connector:Conn_01x02_Male J5
-U 1 1 5EE7A0CC
-P 8350 2550
-F 0 "J5" H 8322 2524 50  0000 R CNN
-F 1 "Conn_01x02_Male" H 8322 2433 50  0000 R CNN
-F 2 "Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical" H 8350 2550 50  0001 C CNN
-F 3 "~" H 8350 2550 50  0001 C CNN
-	1    8350 2550
-	-1   0    0    -1  
-$EndComp
 $Comp
 L Connector:Conn_01x02_Male J14
 U 1 1 5EF1BC1B
@@ -683,4 +508,198 @@ Text GLabel 5950 5750 0    50   Input ~ 0
 VIN
 Text GLabel 5950 5650 0    50   Input ~ 0
 GND
+$Comp
+L Connector:Conn_01x09_Male J5
+U 1 1 5FBC5965
+P 8600 3810
+F 0 "J5" H 8572 3784 50  0000 R CNN
+F 1 "Conn_01x09_Male" H 8572 3693 50  0000 R CNN
+F 2 "Connector_JST:JST_PH_B9B-PH-K_1x09_P2.00mm_Vertical" H 8600 3810 50  0001 C CNN
+F 3 "~" H 8600 3810 50  0001 C CNN
+	1    8600 3810
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x06_Male J3
+U 1 1 5EE99C99
+P 3200 5400
+F 0 "J3" H 3310 5780 50  0000 C CNN
+F 1 "Conn_01x06_Male" H 3310 5700 50  0000 C CNN
+F 2 "Connector_JST:JST_PH_B6B-PH-K_1x06_P2.00mm_Vertical" H 3200 5400 50  0001 C CNN
+F 3 "~" H 3200 5400 50  0001 C CNN
+	1    3200 5400
+	1    0    0    -1  
+$EndComp
+$Comp
+L Jumper:SolderJumper_2_Open JP1
+U 1 1 5FBD2264
+P 2790 3790
+F 0 "JP1" H 2790 3880 50  0000 C CNN
+F 1 "SolderJumper_2_Open" H 2140 3790 50  0001 C CNN
+F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 2790 3790 50  0001 C CNN
+F 3 "~" H 2790 3790 50  0001 C CNN
+	1    2790 3790
+	1    0    0    -1  
+$EndComp
+$Comp
+L Jumper:SolderJumper_2_Open JP2
+U 1 1 5FBD3335
+P 2790 3990
+F 0 "JP2" H 2790 4080 50  0000 C CNN
+F 1 "SolderJumper_2_Open" H 2140 3990 50  0001 C CNN
+F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 2790 3990 50  0001 C CNN
+F 3 "~" H 2790 3990 50  0001 C CNN
+	1    2790 3990
+	1    0    0    -1  
+$EndComp
+$Comp
+L Jumper:SolderJumper_2_Open JP3
+U 1 1 5FBD370A
+P 2790 4180
+F 0 "JP3" H 2790 4260 50  0000 C CNN
+F 1 "SolderJumper_2_Open" H 2140 4180 50  0001 C CNN
+F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 2790 4180 50  0001 C CNN
+F 3 "~" H 2790 4180 50  0001 C CNN
+	1    2790 4180
+	1    0    0    -1  
+$EndComp
+$Comp
+L Jumper:SolderJumper_2_Open JP4
+U 1 1 5FBD3AC0
+P 2790 4370
+F 0 "JP4" H 2790 4450 50  0000 C CNN
+F 1 "SolderJumper_2_Open" H 2130 4350 50  0001 C CNN
+F 2 "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm" H 2790 4370 50  0001 C CNN
+F 3 "~" H 2790 4370 50  0001 C CNN
+	1    2790 4370
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3020 3790 3020 3990
+Wire Wire Line
+	2940 3990 3020 3990
+Wire Wire Line
+	3020 3990 3020 4180
+Wire Wire Line
+	3020 4180 2940 4180
+Connection ~ 3020 3990
+Wire Wire Line
+	3020 4180 3020 4370
+Wire Wire Line
+	3020 4370 2940 4370
+Connection ~ 3020 4180
+Wire Wire Line
+	2940 3790 3020 3790
+Wire Wire Line
+	3020 3790 3140 3790
+Connection ~ 3020 3790
+$Comp
+L Jumper:SolderJumper_3_Bridged12 JP5
+U 1 1 5FBEB610
+P 8130 1210
+F 0 "JP5" V 8130 1278 50  0000 L CNN
+F 1 "SolderJumper_3_Bridged12" V 8175 1277 50  0001 L CNN
+F 2 "Jumper:SolderJumper-3_P1.3mm_Bridged12_RoundedPad1.0x1.5mm" H 8130 1210 50  0001 C CNN
+F 3 "~" H 8130 1210 50  0001 C CNN
+	1    8130 1210
+	0    1    1    0   
+$EndComp
+Text GLabel 7980 1210 0    50   Input ~ 0
+VLED
+Text GLabel 8130 1410 0    50   Input ~ 0
+VOUT
+Text GLabel 8130 1010 0    50   Input ~ 0
+VIN
+$Comp
+L Connector:Conn_01x09_Male J2
+U 1 1 5FC0C417
+P 8600 4790
+F 0 "J2" H 8572 4764 50  0000 R CNN
+F 1 "Conn_01x09_Male" H 8572 4673 50  0000 R CNN
+F 2 "Connector_JST:JST_PH_B9B-PH-K_1x09_P2.00mm_Vertical" H 8600 4790 50  0001 C CNN
+F 3 "~" H 8600 4790 50  0001 C CNN
+	1    8600 4790
+	-1   0    0    -1  
+$EndComp
+Text GLabel 8280 4390 0    50   Input ~ 0
+VLED
+Wire Wire Line
+	8280 4390 8340 4390
+Wire Wire Line
+	8340 4390 8340 4490
+Wire Wire Line
+	8340 5190 8400 5190
+Connection ~ 8340 4390
+Wire Wire Line
+	8340 4390 8400 4390
+Wire Wire Line
+	8340 5090 8400 5090
+Connection ~ 8340 5090
+Wire Wire Line
+	8340 5090 8340 5190
+Wire Wire Line
+	8340 4990 8400 4990
+Connection ~ 8340 4990
+Wire Wire Line
+	8340 4990 8340 5090
+Wire Wire Line
+	8340 4890 8400 4890
+Connection ~ 8340 4890
+Wire Wire Line
+	8340 4890 8340 4990
+Wire Wire Line
+	8340 4790 8400 4790
+Connection ~ 8340 4790
+Wire Wire Line
+	8340 4790 8340 4890
+Wire Wire Line
+	8340 4690 8400 4690
+Connection ~ 8340 4690
+Wire Wire Line
+	8340 4690 8340 4790
+Wire Wire Line
+	8340 4590 8400 4590
+Connection ~ 8340 4590
+Wire Wire Line
+	8340 4590 8340 4690
+Wire Wire Line
+	8340 4490 8400 4490
+Connection ~ 8340 4490
+Wire Wire Line
+	8340 4490 8340 4590
+$Comp
+L Mechanical:MountingHole H1
+U 1 1 5FC5DE4F
+P 8240 2130
+F 0 "H1" H 8340 2176 50  0000 L CNN
+F 1 "MountingHole" H 8340 2085 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.7mm" H 8240 2130 50  0001 C CNN
+F 3 "~" H 8240 2130 50  0001 C CNN
+	1    8240 2130
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole H2
+U 1 1 5FC5E5F8
+P 8240 2320
+F 0 "H2" H 8340 2366 50  0000 L CNN
+F 1 "MountingHole" H 8340 2275 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.7mm" H 8240 2320 50  0001 C CNN
+F 3 "~" H 8240 2320 50  0001 C CNN
+	1    8240 2320
+	1    0    0    -1  
+$EndComp
+$Comp
+L Mechanical:MountingHole H3
+U 1 1 5FC5E93F
+P 8240 2510
+F 0 "H3" H 8340 2556 50  0000 L CNN
+F 1 "MountingHole" H 8340 2465 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.7mm" H 8240 2510 50  0001 C CNN
+F 3 "~" H 8240 2510 50  0001 C CNN
+	1    8240 2510
+	1    0    0    -1  
+$EndComp
+Text Notes 1780 6550 0    50   ~ 0
+TODO: \nFigure out external clock; internal clock doesn't want to come out the clock pin\n\n
 $EndSCHEMATC
