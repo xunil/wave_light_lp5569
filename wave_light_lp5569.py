@@ -77,7 +77,7 @@ class LP5569:
             raise Exception("Cannot enable internal clock when LP5569 is hardware-disabled")
         if self.enabled_sw:
             raise Exception("Cannot enable internal clock when LP5569 is software-enabled")
-        self.reg[IO_CONTROL] |= 0b00001000
+        self.reg[IO_CONTROL] = 0b00001000
         self.reg[MISC] |= (0x01 | (3 << 3))  # int_clk_en = 0b1; cp_mode = 0b11
 
     def set_led_control(self, led, fader, ratiometric, exponential, external_power):
@@ -180,6 +180,7 @@ class LP5569:
         demo_led = 1
         demo_engine = 0
 
+
         print("Enabling chip in hardware")
         self.chip_enable_hw()
         time.sleep(0.1)
@@ -190,6 +191,7 @@ class LP5569:
         print("Enabling chip in software")
         self.chip_enable_sw()
         time.sleep(1)
+        #self.reg[IO_CONTROL] = 0b00001000
 
         # self.clear_interrupt()
         print("Setting LED control to no fader, no ratiometric dimming, external power, exponential adjustment")
