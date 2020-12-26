@@ -1,6 +1,7 @@
 ( LP5569 Assembler )
 
 128 chars allocate drop constant prog
+prog 128 chars erase
 
 variable pc
 0 pc !
@@ -11,6 +12,10 @@ variable pc
 
 : curaddr
 	prog pc @ +
+	;
+
+: nextpc!
+	2 pc +!
 	;
 
 variable mode		\ address mode; 0=immediate -1=variable
@@ -34,38 +39,38 @@ variable mode		\ address mode; 0=immediate -1=variable
 2 register %c
 3 register %d
 
+\ Store instruction in the program
 \ ( c c c-addr -- )
 : instr!
-	tuck c! c!
+	tuck c! 1+ c!
 	;
 
-\ ( c-addr -- )
-: instr,
-	dup 1+ swap -rot
-	c, c,
-	;
-
+\ Fetch instruction bytes from the dictionary entry for the defined word
 \ ( c-addr -- c c )
 : instr@
-	dup 1+ swap -rot
-	c@ c@
+	dup c@ swap 1+ c@
 	;
 
-\ instruction with no arguments
+\ instruction with no arguments are created with this defining word
 : instr
-	create
-	instr,
-	does> instr@ prog pc @ + instr!
-	2 pc +! 
+	create c, c,
+	does> 
+		instr@
+		curaddr
+		instr!
+		nextpc!
 	;
 
 \ instruction requiring simple OR of operand
 \ Only immediate mode is valid for instructions using this defining word
 : instr_or
-	create
-	instr,
-	does> instr@ 2 roll or prog pc @ + instr!
-	2 pc +! 
+	create c, c,
+	does>
+		instr@
+		2 roll or
+		curaddr
+		instr!
+		nextpc!
 	;
 
 hex
@@ -89,6 +94,7 @@ e0 00 instr trig_clear
 9d 00 instr_or map_sel
 
 \ Multi-mode instructions
+\ XXX: Rewrite this word
 : set_pwm 
 	mode if 
 		60 + 84 swap	\ Variable address mode
@@ -99,3 +105,11 @@ e0 00 instr trig_clear
 	imm!				\ Back to immediate mode
 	;
 
+
+prog 10 dump
+map_next
+int
+load_next
+rst
+map_clr
+prog 10 dump
