@@ -89,7 +89,7 @@ Wire Wire Line
 	6050 2100 6250 2100
 Wire Wire Line
 	6250 2500 6250 2400
-Text GLabel 8400 3410 0    50   Input ~ 0
+Text GLabel 8250 3600 0    50   Input ~ 0
 LED0
 Text GLabel 6600 3550 2    50   Input ~ 0
 LED0
@@ -109,21 +109,21 @@ Text GLabel 6600 4600 2    50   Input ~ 0
 LED7
 Text GLabel 6600 4750 2    50   Input ~ 0
 LED8
-Text GLabel 8400 3510 0    50   Input ~ 0
+Text GLabel 8250 3700 0    50   Input ~ 0
 LED1
-Text GLabel 8400 3610 0    50   Input ~ 0
+Text GLabel 8250 3800 0    50   Input ~ 0
 LED2
-Text GLabel 8400 3710 0    50   Input ~ 0
+Text GLabel 8250 3900 0    50   Input ~ 0
 LED3
-Text GLabel 8400 3810 0    50   Input ~ 0
+Text GLabel 8250 4000 0    50   Input ~ 0
 LED4
-Text GLabel 8400 3910 0    50   Input ~ 0
+Text GLabel 8250 4100 0    50   Input ~ 0
 LED5
-Text GLabel 8400 4010 0    50   Input ~ 0
+Text GLabel 8250 4200 0    50   Input ~ 0
 LED6
-Text GLabel 8400 4110 0    50   Input ~ 0
+Text GLabel 8250 4300 0    50   Input ~ 0
 LED7
-Text GLabel 8400 4210 0    50   Input ~ 0
+Text GLabel 8250 4400 0    50   Input ~ 0
 LED8
 Text GLabel 7200 3100 2    50   Input ~ 0
 VOUT
@@ -209,7 +209,7 @@ Wire Wire Line
 Wire Wire Line
 	3650 2300 3450 2300
 Connection ~ 3450 2300
-Text GLabel 4650 3100 0    50   Input ~ 0
+Text GLabel 5300 3100 0    50   Input ~ 0
 VIN
 $Comp
 L power:PWR_FLAG #FLG0101
@@ -248,36 +248,6 @@ Text GLabel 2450 1250 0    50   Input ~ 0
 VIN
 Wire Wire Line
 	2450 1250 2500 1250
-Text GLabel 2000 1250 0    50   Input ~ 0
-V1P8
-$Comp
-L power:PWR_FLAG #FLG0103
-U 1 1 5EE885CC
-P 2050 1250
-F 0 "#FLG0103" H 2050 1325 50  0001 C CNN
-F 1 "PWR_FLAG" H 2050 1423 50  0000 C CNN
-F 2 "" H 2050 1250 50  0001 C CNN
-F 3 "~" H 2050 1250 50  0001 C CNN
-	1    2050 1250
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	2000 1250 2050 1250
-Text GLabel 2900 1250 0    50   Input ~ 0
-VOUT
-$Comp
-L power:PWR_FLAG #FLG0104
-U 1 1 5EE88E43
-P 2950 1250
-F 0 "#FLG0104" H 2950 1325 50  0001 C CNN
-F 1 "PWR_FLAG" H 2950 1423 50  0000 C CNN
-F 2 "" H 2950 1250 50  0001 C CNN
-F 3 "~" H 2950 1250 50  0001 C CNN
-	1    2950 1250
-	-1   0    0    -1  
-$EndComp
-Wire Wire Line
-	2950 1250 2900 1250
 Text GLabel 5300 4100 0    50   Input ~ 0
 CLK
 Text GLabel 5300 3950 0    50   Input ~ 0
@@ -285,35 +255,35 @@ EN_PWM
 Text GLabel 5300 4250 0    50   Input ~ 0
 GPIO_TRIG_INT
 $Comp
-L Connector:Conn_01x06_Male J1
+L Connector:Conn_01x07_Male J1
 U 1 1 5EE92BFD
-P 2050 5400
-F 0 "J1" H 2158 5781 50  0000 C CNN
-F 1 "Conn_01x06_Male" H 2158 5690 50  0000 C CNN
-F 2 "Connector_JST:JST_PH_B6B-PH-K_1x06_P2.00mm_Vertical" H 2050 5400 50  0001 C CNN
-F 3 "~" H 2050 5400 50  0001 C CNN
-	1    2050 5400
+P 2050 5510
+F 0 "J1" H 2160 6010 50  0000 C CNN
+F 1 "Conn_01x07_Male" H 2160 5940 50  0000 C CNN
+F 2 "Connector_JST:JST_PH_B7B-PH-K_1x07_P2.00mm_Vertical" H 2050 5510 50  0001 C CNN
+F 3 "~" H 2050 5510 50  0001 C CNN
+	1    2050 5510
 	1    0    0    -1  
 $EndComp
-Text GLabel 2250 5200 2    50   Input ~ 0
+Text GLabel 2250 5210 2    50   Input ~ 0
 SCL
-Text GLabel 2250 5300 2    50   Input ~ 0
+Text GLabel 2250 5310 2    50   Input ~ 0
 SDA
-Text GLabel 2250 5500 2    50   Input ~ 0
+Text GLabel 2250 5510 2    50   Input ~ 0
 CLK
-Text GLabel 2250 5400 2    50   Input ~ 0
+Text GLabel 2250 5410 2    50   Input ~ 0
 EN_PWM
-Text GLabel 2250 5600 2    50   Input ~ 0
+Text GLabel 2250 5610 2    50   Input ~ 0
 GPIO_TRIG_INT
 $Comp
 L power:GND #PWR0106
 U 1 1 5EE94E0F
-P 2250 5700
-F 0 "#PWR0106" H 2250 5450 50  0001 C CNN
-F 1 "GND" H 2255 5527 50  0000 C CNN
-F 2 "" H 2250 5700 50  0001 C CNN
-F 3 "" H 2250 5700 50  0001 C CNN
-	1    2250 5700
+P 2250 5810
+F 0 "#PWR0106" H 2250 5560 50  0001 C CNN
+F 1 "GND" H 2255 5637 50  0000 C CNN
+F 2 "" H 2250 5810 50  0001 C CNN
+F 3 "" H 2250 5810 50  0001 C CNN
+	1    2250 5810
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -335,58 +305,31 @@ Text Notes 1900 4950 0    50   ~ 0
 Logic Inputs
 Text Notes 7190 880  0    50   ~ 0
 LED Power Rail Selection
-Text Notes 8050 3260 0    50   ~ 0
+Text Notes 8180 3320 0    50   ~ 0
 LED Connections
-Text GLabel 3400 5200 2    50   Input ~ 0
+Text GLabel 3410 5210 2    50   Input ~ 0
 SCL
-Text GLabel 3400 5300 2    50   Input ~ 0
+Text GLabel 3410 5310 2    50   Input ~ 0
 SDA
-Text GLabel 3400 5500 2    50   Input ~ 0
+Text GLabel 3410 5510 2    50   Input ~ 0
 CLK
-Text GLabel 3400 5400 2    50   Input ~ 0
+Text GLabel 3410 5410 2    50   Input ~ 0
 EN_PWM
-Text GLabel 3400 5600 2    50   Input ~ 0
+Text GLabel 3410 5610 2    50   Input ~ 0
 GPIO_TRIG_INT
 $Comp
 L power:GND #PWR0107
 U 1 1 5EE99CA4
-P 3400 5700
-F 0 "#PWR0107" H 3400 5450 50  0001 C CNN
-F 1 "GND" H 3470 5530 50  0000 R CNN
-F 2 "" H 3400 5700 50  0001 C CNN
-F 3 "" H 3400 5700 50  0001 C CNN
-	1    3400 5700
+P 3410 5810
+F 0 "#PWR0107" H 3410 5560 50  0001 C CNN
+F 1 "GND" H 3480 5640 50  0000 R CNN
+F 2 "" H 3410 5810 50  0001 C CNN
+F 3 "" H 3410 5810 50  0001 C CNN
+	1    3410 5810
 	1    0    0    -1  
 $EndComp
 Text Notes 3070 4940 0    50   ~ 0
 Logic Outputs
-$Comp
-L Device:C C3
-U 1 1 5EEAE369
-P 4750 3250
-F 0 "C3" H 4635 3204 50  0000 R CNN
-F 1 "1uF" H 4635 3295 50  0000 R CNN
-F 2 "Capacitors_SMD:C_0805_HandSoldering" H 4788 3100 50  0001 C CNN
-F 3 "~" H 4750 3250 50  0001 C CNN
-	1    4750 3250
-	-1   0    0    1   
-$EndComp
-$Comp
-L power:GND #PWR0108
-U 1 1 5EEAEAD6
-P 4750 3400
-F 0 "#PWR0108" H 4750 3150 50  0001 C CNN
-F 1 "GND" H 4755 3227 50  0000 C CNN
-F 2 "" H 4750 3400 50  0001 C CNN
-F 3 "" H 4750 3400 50  0001 C CNN
-	1    4750 3400
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	4650 3100 4750 3100
-Wire Wire Line
-	4750 3100 5300 3100
-Connection ~ 4750 3100
 $Comp
 L Device:C C6
 U 1 1 5EEB075D
@@ -494,12 +437,12 @@ Wire Wire Line
 	2300 2650 2300 2300
 Connection ~ 2300 2300
 $Comp
-L Connector:Conn_01x02_Male J14
+L Connector:Conn_01x02_Male J4
 U 1 1 5EF1BC1B
 P 6150 5650
-F 0 "J14" H 6122 5624 50  0000 R CNN
+F 0 "J4" H 6122 5624 50  0000 R CNN
 F 1 "Conn_01x02_Male" H 6122 5533 50  0000 R CNN
-F 2 "Connector_JST:JST_XH_B2B-XH-A_1x02_P2.50mm_Vertical" H 6150 5650 50  0001 C CNN
+F 2 "Connector_JST:JST_XH_S2B-XH-A_1x02_P2.50mm_Horizontal" H 6150 5650 50  0001 C CNN
 F 3 "~" H 6150 5650 50  0001 C CNN
 	1    6150 5650
 	-1   0    0    -1  
@@ -509,25 +452,14 @@ VIN
 Text GLabel 5950 5650 0    50   Input ~ 0
 GND
 $Comp
-L Connector:Conn_01x09_Male J5
-U 1 1 5FBC5965
-P 8600 3810
-F 0 "J5" H 8572 3784 50  0000 R CNN
-F 1 "Conn_01x09_Male" H 8572 3693 50  0000 R CNN
-F 2 "Connector_JST:JST_PH_B9B-PH-K_1x09_P2.00mm_Vertical" H 8600 3810 50  0001 C CNN
-F 3 "~" H 8600 3810 50  0001 C CNN
-	1    8600 3810
-	-1   0    0    -1  
-$EndComp
-$Comp
-L Connector:Conn_01x06_Male J3
+L Connector:Conn_01x07_Male J3
 U 1 1 5EE99C99
-P 3200 5400
-F 0 "J3" H 3310 5780 50  0000 C CNN
-F 1 "Conn_01x06_Male" H 3310 5700 50  0000 C CNN
-F 2 "Connector_JST:JST_PH_B6B-PH-K_1x06_P2.00mm_Vertical" H 3200 5400 50  0001 C CNN
-F 3 "~" H 3200 5400 50  0001 C CNN
-	1    3200 5400
+P 3210 5510
+F 0 "J3" H 3320 6010 50  0000 C CNN
+F 1 "Conn_01x07_Male" H 3320 5930 50  0000 C CNN
+F 2 "Connector_JST:JST_PH_B7B-PH-K_1x07_P2.00mm_Vertical" H 3210 5510 50  0001 C CNN
+F 3 "~" H 3210 5510 50  0001 C CNN
+	1    3210 5510
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -611,95 +543,118 @@ VOUT
 Text GLabel 8130 1010 0    50   Input ~ 0
 VIN
 $Comp
-L Connector:Conn_01x09_Male J2
-U 1 1 5FC0C417
-P 8600 4790
-F 0 "J2" H 8572 4764 50  0000 R CNN
-F 1 "Conn_01x09_Male" H 8572 4673 50  0000 R CNN
-F 2 "Connector_JST:JST_PH_B9B-PH-K_1x09_P2.00mm_Vertical" H 8600 4790 50  0001 C CNN
-F 3 "~" H 8600 4790 50  0001 C CNN
-	1    8600 4790
-	-1   0    0    -1  
-$EndComp
-Text GLabel 8280 4390 0    50   Input ~ 0
-VLED
-Wire Wire Line
-	8280 4390 8340 4390
-Wire Wire Line
-	8340 4390 8340 4490
-Wire Wire Line
-	8340 5190 8400 5190
-Connection ~ 8340 4390
-Wire Wire Line
-	8340 4390 8400 4390
-Wire Wire Line
-	8340 5090 8400 5090
-Connection ~ 8340 5090
-Wire Wire Line
-	8340 5090 8340 5190
-Wire Wire Line
-	8340 4990 8400 4990
-Connection ~ 8340 4990
-Wire Wire Line
-	8340 4990 8340 5090
-Wire Wire Line
-	8340 4890 8400 4890
-Connection ~ 8340 4890
-Wire Wire Line
-	8340 4890 8340 4990
-Wire Wire Line
-	8340 4790 8400 4790
-Connection ~ 8340 4790
-Wire Wire Line
-	8340 4790 8340 4890
-Wire Wire Line
-	8340 4690 8400 4690
-Connection ~ 8340 4690
-Wire Wire Line
-	8340 4690 8340 4790
-Wire Wire Line
-	8340 4590 8400 4590
-Connection ~ 8340 4590
-Wire Wire Line
-	8340 4590 8340 4690
-Wire Wire Line
-	8340 4490 8400 4490
-Connection ~ 8340 4490
-Wire Wire Line
-	8340 4490 8340 4590
-$Comp
-L Mechanical:MountingHole H1
-U 1 1 5FC5DE4F
-P 8240 2130
-F 0 "H1" H 8340 2176 50  0000 L CNN
-F 1 "MountingHole" H 8340 2085 50  0000 L CNN
-F 2 "MountingHole:MountingHole_2.7mm_Pad" H 8240 2130 50  0001 C CNN
-F 3 "~" H 8240 2130 50  0001 C CNN
-	1    8240 2130
-	1    0    0    -1  
-$EndComp
-$Comp
-L Mechanical:MountingHole H2
+L Mechanical:MountingHole_Pad H2
 U 1 1 5FC5E5F8
 P 8240 2320
-F 0 "H2" H 8340 2366 50  0000 L CNN
-F 1 "MountingHole" H 8340 2275 50  0000 L CNN
+F 0 "H2" V 8170 2490 50  0000 L CNN
+F 1 "MountingHole_Pad" V 8260 2490 50  0000 L CNN
 F 2 "MountingHole:MountingHole_2.7mm_Pad" H 8240 2320 50  0001 C CNN
 F 3 "~" H 8240 2320 50  0001 C CNN
 	1    8240 2320
-	1    0    0    -1  
+	0    1    1    0   
 $EndComp
 $Comp
-L Mechanical:MountingHole H3
+L Mechanical:MountingHole_Pad H3
 U 1 1 5FC5E93F
 P 8240 2510
-F 0 "H3" H 8340 2556 50  0000 L CNN
-F 1 "MountingHole" H 8340 2465 50  0000 L CNN
+F 0 "H3" V 8180 2680 50  0000 L CNN
+F 1 "MountingHole_pad" V 8270 2680 50  0000 L CNN
 F 2 "MountingHole:MountingHole_2.7mm_Pad" H 8240 2510 50  0001 C CNN
 F 3 "~" H 8240 2510 50  0001 C CNN
 	1    8240 2510
+	0    1    1    0   
+$EndComp
+Text GLabel 8850 3600 2    50   Input ~ 0
+VLED
+$Comp
+L Connector_Generic:Conn_02x09_Odd_Even J2
+U 1 1 5FDCF27D
+P 8450 4000
+F 0 "J2" H 8500 4617 50  0000 C CNN
+F 1 "Conn_02x09_Odd_Even" H 8500 4526 50  0000 C CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_2x09_P2.54mm_Horizontal" H 8450 4000 50  0001 C CNN
+F 3 "~" H 8450 4000 50  0001 C CNN
+	1    8450 4000
 	1    0    0    -1  
 $EndComp
-Text Notes 1780 6550 0    50   ~ 0
-TODO: \nFigure out external clock; internal clock doesn't want to come out the clock pin\n\n
+Wire Wire Line
+	8790 4400 8750 4400
+Connection ~ 8790 3600
+Wire Wire Line
+	8790 3600 8750 3600
+Wire Wire Line
+	8790 3600 8790 3700
+Wire Wire Line
+	8750 4300 8790 4300
+Connection ~ 8790 4300
+Wire Wire Line
+	8790 4300 8790 4400
+Wire Wire Line
+	8750 4200 8790 4200
+Connection ~ 8790 4200
+Wire Wire Line
+	8790 4200 8790 4300
+Wire Wire Line
+	8750 4100 8790 4100
+Connection ~ 8790 4100
+Wire Wire Line
+	8790 4100 8790 4200
+Wire Wire Line
+	8750 4000 8790 4000
+Connection ~ 8790 4000
+Wire Wire Line
+	8790 4000 8790 4100
+Wire Wire Line
+	8750 3900 8790 3900
+Connection ~ 8790 3900
+Wire Wire Line
+	8790 3900 8790 4000
+Wire Wire Line
+	8750 3800 8790 3800
+Connection ~ 8790 3800
+Wire Wire Line
+	8790 3800 8790 3900
+Wire Wire Line
+	8750 3700 8790 3700
+Connection ~ 8790 3700
+Wire Wire Line
+	8790 3700 8790 3800
+Wire Wire Line
+	8790 3600 8850 3600
+Text Notes 5720 5520 0    50   ~ 0
+Power Input
+Text GLabel 2250 5710 2    50   Input ~ 0
+VIN
+Text GLabel 3410 5710 2    50   Input ~ 0
+VIN
+$Comp
+L Mechanical:MountingHole_Pad H1
+U 1 1 5FC5DE4F
+P 8240 2130
+F 0 "H1" V 8160 2300 50  0000 L CNN
+F 1 "MountingHole_Pad" V 8240 2300 50  0000 L CNN
+F 2 "MountingHole:MountingHole_2.7mm_Pad" H 8240 2130 50  0001 C CNN
+F 3 "~" H 8240 2130 50  0001 C CNN
+	1    8240 2130
+	0    1    1    0   
+$EndComp
+$Comp
+L power:GND #PWR0110
+U 1 1 5FDF67C2
+P 8140 2610
+F 0 "#PWR0110" H 8140 2360 50  0001 C CNN
+F 1 "GND" H 8210 2440 50  0000 R CNN
+F 2 "" H 8140 2610 50  0001 C CNN
+F 3 "" H 8140 2610 50  0001 C CNN
+	1    8140 2610
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8140 2130 8140 2320
+Wire Wire Line
+	8140 2320 8140 2510
+Connection ~ 8140 2320
+Wire Wire Line
+	8140 2510 8140 2610
+Connection ~ 8140 2510
 $EndSCHEMATC
