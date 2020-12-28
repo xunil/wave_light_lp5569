@@ -23,6 +23,15 @@ variable mode		\ address mode; 0=immediate -1=variable
 
 : imm! 0 mode ! ;
 : var! -1 mode ! ;
+: mode? mode @ ;
+
+: prescale 1 ;
+: noprescale 0 ;
+: sign+ 0 ;
+: sign- 1 ;
+
+: << lshift ;
+: >> rshift ;
 
 : label
 	prog pc @ +
@@ -61,12 +70,13 @@ variable mode		\ address mode; 0=immediate -1=variable
 	;
 
 \ instruction requiring simple OR of operand
-\ Only immediate mode is valid for instructions using this defining word
+\ Only immediate mode is valid for instructions created with this defining word
 : instr_or
 	create c, c,
 	does>
 		instr@
-		2 roll or
+		\ 2 roll or
+		-rot or swap
 		curaddr instr!
 		nextpc!
 	;
@@ -92,18 +102,50 @@ e0 00 instr trig_clear
 9d 00 instr_or map_sel
 
 \ Multi-mode instructions
-\ XXX: Rewrite this word
 : set_pwm 
-	mode if 
-		60 or 84 swap	\ Variable address mode
+	mode? if 
+		60 or 84	\ Variable address mode
 	else
-		0 or 40 swap	\ Immediate address mode
+		0 or 40		\ Immediate address mode
 	then
 	curaddr instr!
 	nextpc!
-	imm!				\ Back to immediate mode
+	imm!			\ Back to immediate mode
 	;
 
+( prescale sign %steptime %numincr -- )	\ Variable mode
+( prescale steptime sign numincr -- )	\ Immediate mode
+: ramp
+	cr
+	mode? if			\ Variable address mode
+		0 or 			\ variable for num increments
+		swap 2 << or 	\ variable for step time
+		swap 4 << or 	\ sign
+		swap 5 << or 	\ prescale
+		84				\ MSB
+	else				\ Immediate address mode
+		." ramp(1):" .s cr
+		-rot			\ ( prescale steptime sign numincr -- prescale numincr steptime sign )
+		." ramp(1):" .s cr
+		swap 1 << or 	\ ( prescale numincr steptime sign -- prescale numincr MSB )
+		." ramp(1):" .s cr
+		swap 6 << or 	\ ( prescale numincr MSB -- numincr(LSB) MSB )
+		." ramp(1):" .s cr
+	then
+	curaddr instr!
+	nextpc!
+	imm!
+	;
+
+( prescale time -- )
+: wait
+	1 << swap
+	6 << or
+	0 swap
+	curaddr instr!
+	nextpc!
+	imm!			\ for good measure
+	;
 
 prog 10 dump
 map_next
