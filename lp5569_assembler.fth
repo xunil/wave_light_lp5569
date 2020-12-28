@@ -56,8 +56,7 @@ variable mode		\ address mode; 0=immediate -1=variable
 	create c, c,
 	does> 
 		instr@
-		curaddr
-		instr!
+		curaddr instr!
 		nextpc!
 	;
 
@@ -68,8 +67,7 @@ variable mode		\ address mode; 0=immediate -1=variable
 	does>
 		instr@
 		2 roll or
-		curaddr
-		instr!
+		curaddr instr!
 		nextpc!
 	;
 
@@ -97,11 +95,12 @@ e0 00 instr trig_clear
 \ XXX: Rewrite this word
 : set_pwm 
 	mode if 
-		60 + 84 swap	\ Variable address mode
+		60 or 84 swap	\ Variable address mode
 	else
-		0 + 40 swap		\ Immediate address mode
+		0 or 40 swap	\ Immediate address mode
 	then
-	prog pc @ + 2!
+	curaddr instr!
+	nextpc!
 	imm!				\ Back to immediate mode
 	;
 
