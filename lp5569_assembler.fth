@@ -124,13 +124,9 @@ e0 00 instr trig_clear
 		swap 5 << or 	\ prescale
 		84				\ MSB
 	else				\ Immediate address mode
-		." ramp(1):" .s cr
 		-rot			\ ( prescale steptime sign numincr -- prescale numincr steptime sign )
-		." ramp(1):" .s cr
 		swap 1 << or 	\ ( prescale numincr steptime sign -- prescale numincr MSB )
-		." ramp(1):" .s cr
-		swap 6 << or 	\ ( prescale numincr MSB -- numincr(LSB) MSB )
-		." ramp(1):" .s cr
+		rot 6 << or 	\ ( prescale numincr MSB -- numincr(LSB) MSB )
 	then
 	curaddr instr!
 	nextpc!
