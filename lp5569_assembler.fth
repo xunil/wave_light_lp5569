@@ -1,8 +1,10 @@
 ( LP5569 Assembler )
 
+\ Allocate program space from the heap and give it a name
 128 chars allocate drop constant prog
 prog 128 chars erase
 
+\ Keeps track of our position in program memory
 variable pc
 0 pc !
 
@@ -10,13 +12,9 @@ variable pc
 	pc @ 2 /		\ instructions are always 2 bytes long
 	;
 
-: curaddr
-	prog pc @ +
-	;
-
-: nextpc!
-	2 pc +!
-	;
+: curaddr prog pc @ + ;
+: nextpc! 2 pc +! ;
+: 0pc! 0 pc ! ;
 
 variable mode		\ address mode; 0=immediate -1=variable
 0 mode !
@@ -25,18 +23,20 @@ variable mode		\ address mode; 0=immediate -1=variable
 : var! -1 mode ! ;
 : mode? mode @ ;
 
-: prescale 1 ;
-: noprescale 0 ;
-: sign+ 0 ;
-: sign- 1 ;
+1 constant prescale
+0 constant noprescale
+0 constant sign+	\ TODO: Automatically determine sign and drop these constants.
+1 constant sign-
+
+0 constant noint
+1 constant doint
+0 constant noreset
+1 constant doreset
 
 : << lshift ;
 : >> rshift ;
 
-: label
-	prog pc @ +
-	constant
-	;
+: label	curaddr	constant ;
 
 : register
 	create c,
@@ -143,10 +143,46 @@ e0 00 instr trig_clear
 	imm!			\ for good measure
 	;
 
+( doint doreset -- )
+: end
+	3 << 0 or
+	swap
+	4 << or
+	0 swap
+	;
+
+( loopcnt stepnum -- )
+: branch
+	mode? if			\ Variable address mode
+		dup 40 and		\ ( loopcnt stepnum -- loopcnt stepnum stepnum[7] )
+		86 or 			\ ( loopcnt stepnum stepnum[7] -- loopcnt stepnum MSB )
+		-rot			\ ( loopcnt stepnum MSB -- MSB loopcnt stepnum )
+		3f and	 		\ ( MSB loopcnt stepnum -- MSB loopcnt stepnum[6:0] )
+		2 << or 		\ ( MSB loopcnt stepnum[6:0] -- MSB LSB )
+		swap			\ ( MSB LSB -- LSB MSB )
+	else				\ Immediate address mode
+		over			\ ( loopcnt stepnum -- loopcnt stepnum loopcnt )
+		1 and			\ ( loopcnt stepnum loopcnt -- loopcnt stepnum loopcnt[0] )
+		7 << or 		\ ( loopcnt stepnum loopcnt[0] -- loopcnt LSB )
+		swap 1 >>		\ ( loopcnt LSB -- LSB loopcnt[6:1] )
+		a0 or 			\ ( LSB loopcnt[6:1] -- LSB MSB )
+	then
+	curaddr instr!
+	nextpc!
+	imm!
+	;
+
+\ Testing immediate mode instructions
 prog 10 dump
+
+label _start
 map_next
 int
 load_next
-rst
 map_clr
+
+5 _start branch
+noint doreset end
+
 prog 10 dump
+
