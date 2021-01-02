@@ -36,17 +36,20 @@ variable mode		\ address mode; 0=immediate -1=variable
 : << lshift ;
 : >> rshift ;
 
-: label	curaddr	constant ;
+: label	
+	pc @ 2/
+	constant
+	;
 
 : register
 	create c,
 	does> var! c@
 	;
 
-0 register %a
-1 register %b
-2 register %c
-3 register %d
+0 register ra
+1 register rb
+2 register rc
+3 register rd
 
 \ Store instruction in the program
 \ ( c c c-addr -- )
@@ -75,7 +78,7 @@ variable mode		\ address mode; 0=immediate -1=variable
 	create c, c,
 	does>
 		instr@
-		\ 2 roll or
+		\ 2 roll or 			\ XXX: Is this word done?
 		-rot or swap
 		curaddr instr!
 		nextpc!
@@ -117,13 +120,13 @@ e0 00 instr trig_clear
 ( prescale steptime sign numincr -- )	\ Immediate mode
 : ramp
 	cr
-	mode? if			\ Variable address mode
+	mode? if			\ -- Variable address mode
 		0 or 			\ variable for num increments
 		swap 2 << or 	\ variable for step time
 		swap 4 << or 	\ sign
 		swap 5 << or 	\ prescale
 		84				\ MSB
-	else				\ Immediate address mode
+	else				\ -- Immediate address mode
 		-rot			\ ( prescale steptime sign numincr -- prescale numincr steptime sign )
 		swap 1 << or 	\ ( prescale numincr steptime sign -- prescale numincr MSB )
 		rot 6 << or 	\ ( prescale numincr MSB -- numincr(LSB) MSB )
@@ -140,7 +143,7 @@ e0 00 instr trig_clear
 	0 swap
 	curaddr instr!
 	nextpc!
-	imm!			\ for good measure
+	imm!
 	;
 
 ( doint doreset -- )
@@ -149,18 +152,22 @@ e0 00 instr trig_clear
 	swap
 	4 << or
 	0 swap
+	c0 or
+	curaddr instr!
+	nextpc!
+	imm!
 	;
 
 ( loopcnt stepnum -- )
 : branch
-	mode? if			\ Variable address mode
+	mode? if			\ -- Variable address mode
 		dup 40 and		\ ( loopcnt stepnum -- loopcnt stepnum stepnum[7] )
 		86 or 			\ ( loopcnt stepnum stepnum[7] -- loopcnt stepnum MSB )
 		-rot			\ ( loopcnt stepnum MSB -- MSB loopcnt stepnum )
 		3f and	 		\ ( MSB loopcnt stepnum -- MSB loopcnt stepnum[6:0] )
 		2 << or 		\ ( MSB loopcnt stepnum[6:0] -- MSB LSB )
 		swap			\ ( MSB LSB -- LSB MSB )
-	else				\ Immediate address mode
+	else				\ -- Immediate address mode
 		over			\ ( loopcnt stepnum -- loopcnt stepnum loopcnt )
 		1 and			\ ( loopcnt stepnum loopcnt -- loopcnt stepnum loopcnt[0] )
 		7 << or 		\ ( loopcnt stepnum loopcnt[0] -- loopcnt LSB )
@@ -172,16 +179,39 @@ e0 00 instr trig_clear
 	imm!
 	;
 
-\ Testing immediate mode instructions
+( skipcount var1 var2 -- )
+: condbranch
+	create c, 0 c,
+	does>
+		instr@			\ ( skipcount var1 var2 -- skipcount var1 var2 MSB LSB )
+		rot or 			\ ( skipcount var1 var2 MSB LSB -- skipcount var1 MSB LSB )
+		rot 2 << or 	\ ( skipcount var1 MSB LSB -- skipcount MSB LSB )
+		-rot swap 		\ ( skipcount MSB LSB -- LSB MSB skipcount )
+		4 >> or 		\ ( LSB MSB skipcount -- LSB MSB )
+		curaddr instr!
+		nextpc!
+		imm!
+	;
+
+88 condbranch jne
+8a condbranch jl
+8c condbranch jge
+8e condbranch je
+
+\ Testing!
 prog 10 dump
 
 label _start
 map_next
 int
+label _donext
 load_next
 map_clr
 
-5 _start branch
+1 rb rd jl			\ skip 1 instruction if rb < rd
+
+5 _donext branch
+label _dontdonext
 noint doreset end
 
 prog 10 dump
