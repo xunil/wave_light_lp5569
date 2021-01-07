@@ -37,7 +37,7 @@ variable mode		\ address mode; 0=immediate -1=variable
 : >> rshift ;
 
 : label	
-	pc @ 2/
+	step
 	constant
 	;
 
