@@ -673,7 +673,7 @@ U 1 1 5FC5DE4F
 P 8240 2130
 F 0 "H1" H 8340 2176 50  0000 L CNN
 F 1 "MountingHole" H 8340 2085 50  0000 L CNN
-F 2 "MountingHole:MountingHole_2.7mm" H 8240 2130 50  0001 C CNN
+F 2 "MountingHole:MountingHole_2.7mm_Pad" H 8240 2130 50  0001 C CNN
 F 3 "~" H 8240 2130 50  0001 C CNN
 	1    8240 2130
 	1    0    0    -1  
@@ -684,7 +684,7 @@ U 1 1 5FC5E5F8
 P 8240 2320
 F 0 "H2" H 8340 2366 50  0000 L CNN
 F 1 "MountingHole" H 8340 2275 50  0000 L CNN
-F 2 "MountingHole:MountingHole_2.7mm" H 8240 2320 50  0001 C CNN
+F 2 "MountingHole:MountingHole_2.7mm_Pad" H 8240 2320 50  0001 C CNN
 F 3 "~" H 8240 2320 50  0001 C CNN
 	1    8240 2320
 	1    0    0    -1  
@@ -695,7 +695,7 @@ U 1 1 5FC5E93F
 P 8240 2510
 F 0 "H3" H 8340 2556 50  0000 L CNN
 F 1 "MountingHole" H 8340 2465 50  0000 L CNN
-F 2 "MountingHole:MountingHole_2.7mm" H 8240 2510 50  0001 C CNN
+F 2 "MountingHole:MountingHole_2.7mm_Pad" H 8240 2510 50  0001 C CNN
 F 3 "~" H 8240 2510 50  0001 C CNN
 	1    8240 2510
 	1    0    0    -1  
