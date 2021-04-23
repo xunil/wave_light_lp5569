@@ -5,30 +5,44 @@ import time
 
 class LP5569:
     class Reg:
-        def __init__(self, bus, address=0x42):
+        I2C_DELAY = 0.005
+        def __init__(self, bus, address=0x42, debug=True):
             self.bus = SMBus(bus)
             self.address = address
+            self.broadcast = False
+            self.debug = debug
 
         def __getitem__(self, item):
-            return self.bus.read_byte_data(self.address, item)
+            return self.bus.read_byte_data(self.get_address(), item)
 
         def __setitem__(self, key, value):
-            byte_was = self.bus.read_byte_data(self.address, key)
-            time.sleep(0.02)
+            if self.debug:
+                byte_was = self.bus.read_byte_data(self.get_address(), key)
+                time.sleep(self.I2C_DELAY)
             if isinstance(value, list):
-                self.bus.write_i2c_block_data(self.address, key, value)
-                time.sleep(0.02)
+                self.bus.write_i2c_block_data(self.get_address(), key, value)
+                time.sleep(self.I2C_DELAY)
             else:
-                self.bus.write_byte_data(self.address, key, value)
-                time.sleep(0.02)
-                byte_is = self.bus.read_byte_data(self.address, key)
-                time.sleep(0.02)
-                print("\x1b[0;32mDEBUG\x1b[0m: Byte at register {0:#04x} was {1:#010b} ({1:#04x}), wrote {2:#010b} ({2:#04x}), now is {3:#010b} ({3:#04x})".format(
-                        key,
-                        byte_was,
-                        value,
-                        byte_is
-                ))
+                self.bus.write_byte_data(self.get_address(), key, value)
+                time.sleep(self.I2C_DELAY)
+                if self.debug:
+                    byte_is = self.bus.read_byte_data(self.get_address(), key)
+                    time.sleep(self.I2C_DELAY)
+                    print("\x1b[0;32mDEBUG\x1b[0m: Byte at register {0:#04x} was {1:#010b} ({1:#04x}), wrote {2:#010b} ({2:#04x}), now is {3:#010b} ({3:#04x})".format(
+                            key,
+                            byte_was,
+                            value,
+                            byte_is
+                    ))
+
+        def begin_broadcast(self):
+            self.broadcast = True
+
+        def end_broadcast(self):
+            self.broadcast = False
+
+        def get_address(self):
+            return self.address if not self.broadcast else 0x40
 
     engine_bits = lambda self, e: ((2 - e) * 2) + 2
     engine_mask = lambda self, e: 0xff & ~(0b11 << self.engine_bits(e))
@@ -36,6 +50,7 @@ class LP5569:
     def __init__(self, bus=0, address=0x42):
         self.enabled_sw = False
         self.enabled_hw = False
+        self.broadcast = False
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(EN_PWM_GPIO_PIN, GPIO.OUT, initial=GPIO.LOW)
         self.reg = self.Reg(bus, address)
@@ -77,8 +92,16 @@ class LP5569:
             raise Exception("Cannot enable internal clock when LP5569 is hardware-disabled")
         if self.enabled_sw:
             raise Exception("Cannot enable internal clock when LP5569 is software-enabled")
-        self.reg[IO_CONTROL] = 0b00001000
         self.reg[MISC] |= (0x01 | (3 << 3))  # int_clk_en = 0b1; cp_mode = 0b11
+
+    def enable_internal_clock_output(self):
+        self.reg[IO_CONTROL] = 0b00001000
+
+    def begin_broadcast(self):
+        self.reg.begin_broadcast()
+
+    def end_broadcast(self):
+        self.reg.end_broadcast()
 
     def set_led_control(self, led, fader, ratiometric, exponential, external_power):
         control_byte = 0
@@ -180,7 +203,6 @@ class LP5569:
         demo_led = 1
         demo_engine = 0
 
-
         print("Enabling chip in hardware")
         self.chip_enable_hw()
         time.sleep(0.1)
@@ -188,12 +210,11 @@ class LP5569:
         self.use_internal_clock()
         time.sleep(0.1)
 
+        self.begin_broadcast()
         print("Enabling chip in software")
         self.chip_enable_sw()
-        time.sleep(1)
-        #self.reg[IO_CONTROL] = 0b00001000
+        time.sleep(0.1)
 
-        # self.clear_interrupt()
         print("Setting LED control to no fader, no ratiometric dimming, external power, exponential adjustment")
         self.set_led_control(demo_led, LEDCTL_FADER_NONE, False, True, True)
         print("Setting all LEDs to full brightness")
@@ -202,6 +223,11 @@ class LP5569:
         print("Returning LEDs to off")
         for i in range(0, 9):
             self.set_led_pwm(i, 0)
+
+        self.end_broadcast()
+        print("Setting internal clock to output")
+        self.enable_internal_clock_output()
+        self.begin_broadcast()
 
         self.dump_engine_status()
         # Ramp program
@@ -266,11 +292,15 @@ class LP5569:
         ]
 
         program = sine_program
+        #program = scanner_program
 
         print("Loading program: {0}".format(program))
         self.load_program(engine=demo_engine, start_page=0, program=program, offset=0)
         self.set_engine_program_start(engine=demo_engine, start_addr=0, pc=0)
         self.set_engine_program_start(engine=1, start_addr=5, pc=0)
+        # print("Enabling internal clock AGAIN")
+        # self.reg[MISC] = 0x49
+        # self.reg[IO_CONTROL] = 0x8
         self.dump_engine_status()
         #print("Starting engine {0} (engine {1} in docs)".format(demo_engine, demo_engine+1))
         #self.start_engine(demo_engine, RUNMODE_FREE)
@@ -308,5 +338,6 @@ class LP5569:
         print("engine status={0:#010b} ({0:#04x})".format(self.reg[ENGINE_STATUS]))
 
 if __name__ == '__main__':
-    lp = LP5569()
+    # lp = LP5569()
+    lp = LP5569(1, 0x34)
     lp.demo()
